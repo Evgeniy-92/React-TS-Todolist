@@ -13,7 +13,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {loginTC} from "./authReducer";
 import {AppRootStateType} from "../../app/store";
 import {Navigate} from "react-router-dom";
-
+import s from './Login.module.css'
 
 export const Login = () => {
     const dispatch = useDispatch()
@@ -63,6 +63,7 @@ export const Login = () => {
                 <form onSubmit={formik.handleSubmit}>
                     <FormGroup>
                         <TextField
+                            error={formik.touched.email && Boolean(formik.errors.email)}
                             label="Email"
                             margin="normal"
                             {...formik.getFieldProps('email')}
@@ -71,6 +72,7 @@ export const Login = () => {
                             && formik.errors.email
                             && <div style={{color: 'red'}}>{formik.errors.email}</div>}
                         <TextField
+                            error={formik.touched.password && Boolean(formik.errors.password)}
                             type="password"
                             label="Password"
                             margin="normal"
